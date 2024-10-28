@@ -6,7 +6,6 @@ const userRoutes = require('./routes/userRoutes');
 const { errorHandler } = require('./middleware/errorMiddleware');
 require('dotenv').config();
 
-
 const app = express();
 
 // Middleware
@@ -17,12 +16,11 @@ app.use(express.json());
 // Routes
 app.use('/api/users', userRoutes);
 
-//handler - TODO : try to search for a better name for this
+// Error handler
 app.use(errorHandler);
 
-
-// TODO : Add connection string later
-mongoose.connect(process.env.MONGODB_URI, {
+// MongoDB connection
+mongoose.connect(`mongodb+srv://sangeetworkspace:sharma200239@vizualeyes.wupan.mongodb.net/vizualeyes?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
